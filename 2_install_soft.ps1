@@ -64,7 +64,7 @@ Write-Host "Mapping docker-switch-windows.cmd to Switch-DockerWindows..."
 powershell -command "Switch-DockerWindows"
 "@ | Set-Content -Path "$env:ProgramFiles\Docker\Docker\resources\bin\docker-switch-windows.cmd"
 
-& $Env:ProgramFiles\Docker\Docker\DockerCli.exe -SwitchDaemon
+# & $Env:ProgramFiles\Docker\Docker\DockerCli.exe -SwitchDaemon
 
 Write-Host "Finished the installation of Docker for Desktop"
 # Sleep 5
