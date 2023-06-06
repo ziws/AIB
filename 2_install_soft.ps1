@@ -67,7 +67,7 @@ powershell -command "Switch-DockerWindows"
 & $Env:ProgramFiles\Docker\Docker\DockerCli.exe -SwitchDaemon
 
 Write-Host "Finished the installation of Docker for Desktop"
-Sleep 5
-Write-Host "Post-installation node reboot..."
-Sleep 5
-Restart-Computer -Force
+# Sleep 5
+# Write-Host "Post-installation node reboot..."
+# Sleep 5
+# Restart-Computer -Force
