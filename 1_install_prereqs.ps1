@@ -15,7 +15,7 @@ $ProgressPreference = 'SilentlyContinue'
 $results = Enable-WindowsOptionalFeature -Online -FeatureName $("Microsoft-Hyper-V", "Containers") -All -NoRestart -WarningAction SilentlyContinue
 $ProgressPreference = $ProgPref
 Write-Host "Hyper-V and Containers services enabled" -ForegroundColor Green
-Write-Host "Post-installation node reboot..."
-Sleep 5
-if ($results.RestartNeeded -eq $true) {
-  Restart-Computer -Force}
+# Write-Host "Post-installation node reboot..."
+# Sleep 5
+# if ($results.RestartNeeded -eq $true) {
+#   Restart-Computer -Force}
