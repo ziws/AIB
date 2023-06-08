@@ -10,7 +10,14 @@ Sleep 10
 # echo '{"dns":["8.8.8.8"],"experimental":false}' > $env:USERPROFILE\.docker\windows-daemon.json
 # Write-Host "Docker Engine DNS config adjustted" -ForegroundColor Green
 
+# Write-Host "Adjust Docker Engine DNS config..."
+# Invoke-WebRequest -uri 'https://raw.githubusercontent.com/ziws/AIB/main/windows-daemon.json' -OutFile 'C:\\ImageBuilder\\windows-daemon.json',
+# Copy-Item 'C:\\ImageBuilder\\windows-daemon.json\\' -Destination $env:USERPROFILE\\.docker\\windows-daemon.json
+# Write-Host "Docker Engine DNS config adjustted" -ForegroundColor Green
+
+
 Write-Host "Adjust Docker Engine DNS config..."
-Invoke-WebRequest -uri 'https://raw.githubusercontent.com/ziws/AIB/main/windows-daemon.json' -OutFile 'C:\\ImageBuilder\\windows-daemon.json',
-Copy-Item 'C:\\ImageBuilder\\windows-daemon.json\\' -Destination $env:USERPROFILE\\.docker\\windows-daemon.json
+New-Item -Type Directory -Path 'C:\' -Name ImageBuilder
+Invoke-WebRequest -uri 'https://raw.githubusercontent.com/ziws/AIB/main/windows-daemon.json' -OutFile 'C:\ImageBuilder\windows-daemon.json'
+Copy-Item 'C:\ImageBuilder\windows-daemon.json' -Destination $env:USERPROFILE\.docker\windows-daemon.json
 Write-Host "Docker Engine DNS config adjustted" -ForegroundColor Green
