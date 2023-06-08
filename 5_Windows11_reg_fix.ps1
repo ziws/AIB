@@ -23,6 +23,7 @@ $name = "DisablePrivacyExperience"
 $value = "00000001"
 # Add Registry value
 try {
+    New-Item -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows" -Name "OOBE"
     New-ItemProperty -ErrorAction Stop -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\OOBE" -Name $name -Value $value -PropertyType DWORD -Force
     if ((Get-ItemProperty "HKLM:\SOFTWARE\Policies\Microsoft\Windows\OOBE").PSObject.Properties.Name -contains $name) {
         Write-log "Disable Choose privacy settings experience at sign in - key added"
