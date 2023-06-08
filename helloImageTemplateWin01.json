@@ -61,6 +61,7 @@
                         "Invoke-WebRequest -uri 'https://aka.ms/downloadazcopy-v10-windows' -OutFile 'C:\\ImageBuilder\\azcopy.zip'",
                         "Expand-Archive 'C:\\ImageBuilder\\azcopy.zip' 'C:\\ImageBuilder'",
                         "Copy-Item 'C:\\ImageBuilder\\azcopy_windows_amd64_*\\azcopy.exe\\' -Destination 'C:\\ImageBuilder'"
+                      ]
                     },
                     {
                         "type": "PowerShell",
