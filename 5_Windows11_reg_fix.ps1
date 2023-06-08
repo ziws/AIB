@@ -19,16 +19,16 @@ catch {
 #endregion
 
 #region Disable Choose privacy settings experience at sign in
-$Name = "DisablePrivacyExperience"
+$name = "DisablePrivacyExperience"
 $value = "00000001"
 # Add Registry value
 try {
     New-ItemProperty -ErrorAction Stop -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\OOBE" -Name $name -Value $value -PropertyType DWORD -Force
     if ((Get-ItemProperty "HKLM:\SOFTWARE\Policies\Microsoft\Windows\OOBE").PSObject.Properties.Name -contains $name) {
-        Write-log "Added time zone redirection registry key"
+        Write-log "Disable Choose privacy settings experience at sign in - key added"
     }
     else {
-        write-log "Error locating the Teams registry key"
+        write-log "Error locating the registry key"
     }
 }
 catch {
