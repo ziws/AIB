@@ -1,9 +1,16 @@
+# Add docker user
+Write-Host "Adding local user to docker-user group"
+Add-LocalGroupMember -Group "docker-users" -Member $env:UserName -Verbose
+Write-Host "Group created and user added" -ForegroundColor Green
+
+Sleep 3
+
 # Docker Desktop - Switch to Windows containers
 Write-Host "Switching to Windows containers..."
 & $Env:ProgramFiles\Docker\Docker\DockerCli.exe -SwitchDaemon
 Write-Host "Switched to Windows containers" -ForegroundColor Green
 
-Sleep 10
+Sleep 5
 
 # Docker Desktop - Engine adjustment
 # Write-Host "Adjust Docker Engine DNS config..."
