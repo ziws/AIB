@@ -1,0 +1,58 @@
+{
+  "builders": [{
+    "type": "azure-arm",
+
+    "client_id": "xxxx-xxxx-xxxxx-....",
+    "client_secret": "pppp-pppp-pppp-....",
+    "tenant_id": "yyyy-...",
+    "subscription_id": "ssss-ssss-ssss...",
+
+    "managed_image_resource_group_name": "myPackerGroup",
+    "managed_image_name": "myPackerImage",
+
+    "os_type": "Windows",
+    "image_publisher": "MicrosoftWindowsDesktop",
+    "image_offer": "Windows-10",
+    "image_sku": "win10-22h2-ent",
+
+    "communicator": "winrm",
+    "winrm_use_ssl": true,
+    "winrm_insecure": true,
+    "winrm_timeout": "5m",
+    "winrm_username": "packer",
+
+    "azure_tags": {
+        "dept": "Engineering",
+        "task": "Image deployment"
+    },
+
+    "build_resource_group_name": "myPackerGroup",
+    "vm_size": "Standard_E2s_v3"
+  }],
+  "provisioners": [{
+	
+	"type": "powershell",
+    "script": "scripts/1_install_prereqs.ps1"
+	},
+	{
+    "type": "windows-restart"
+    },
+	{
+	"type": "powershell",
+    "script": "scripts/2_install_soft.ps1"
+	},
+	{
+	"type": "powershell",
+    "script": "scripts/3_only_docker_install.ps1"
+	},
+	{
+    "type": "windows-restart"
+	},
+	{
+	"type": "powershell",
+    "script": "scripts/5_Windows11_reg_fix_1.ps1"
+	},
+	{
+	"type": "windows-restart"
+    }]
+}
